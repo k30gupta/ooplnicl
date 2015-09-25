@@ -40,13 +40,13 @@ int collatz_eval (int i, int j) {
         int count = 1;
         num = k;
         while(num != 1){
-            if ((num%2) == 0){
-                num = (num/2);
+            if ((num % 2) == 0){
+                num = (num >> 1);
                 ++count;
             }
             else{
-                num = num + (num*2) + 1;
-                ++count;
+                num += (num >> 1) + 1;
+                count += 2;
             }
         }
         if (count > max)
