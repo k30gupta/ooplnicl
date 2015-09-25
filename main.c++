@@ -67,12 +67,16 @@ void collatz_print (ostream& w, int i, int j, int v) {
 
 void collatz_solve (istream& r, ostream& w) {
     string s;
+    ostringstream output;
     while (getline(r, s)) {
         const pair<int, int> p = collatz_read(s);
         const int            i = p.first;
         const int            j = p.second;
         const int            v = collatz_eval(i, j);
-        collatz_print(w, i, j, v);}}
+        output << i << " " << j << " " << v << endl;
+    }
+    cout << output.str();
+    }
 
 // ----
 // main
