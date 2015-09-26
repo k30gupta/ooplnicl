@@ -14,18 +14,11 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
+#include <map>
 
 using namespace std;
-// ------------
-// collatz_read
-// ------------
 
-pair<int, int> collatz_read (const string& s) {
-    istringstream sin(s);
-    int i;
-    int j;
-    sin >> i >> j;
-    return make_pair(i, j);}
+ //   map<pair<int, int>,int> metaCache;
 
 // ------------
 // collatz_eval
@@ -37,9 +30,10 @@ int collatz_eval (int i, int j) {
     if (i > j)
         swap(i, j);
     for(int k = i;k <= j; ++k){
+
         int count = 1;
         num = k;
-        while(num != 1){
+        while((num != 1) && (num > 0)){
             if ((num % 2) == 0){
                 num = (num >> 1);
                 ++count;
@@ -55,6 +49,38 @@ int collatz_eval (int i, int j) {
     }
     return max;
 }
+
+// ------------
+// round calculator
+// ------------
+
+void round_number_thousand(int start, int end){
+    while (start <= ((end/1000) * 1000) - 1){
+        cout <<"Pair"<<start<<"-"<<((start/1000) + 1)*1000<<endl;
+        start = ((start/1000) + 1) * 1000;
+    }
+   if (start <= end)
+        cout <<"Pair"<<start<<"-"<<end<<endl;
+}
+
+// ------------
+// range cache
+// ------------
+
+int max_value_range(pair<int, int> pair_range){
+    return 0;
+}
+
+// ------------
+// collatz_read
+// ------------
+
+pair<int, int> collatz_read (const string& s) {
+    istringstream sin(s);
+    int i;
+    int j;
+    sin >> i >> j;
+    return make_pair(i, j);}
 
 // -------------
 // collatz_print
@@ -85,5 +111,10 @@ void collatz_solve (istream& r, ostream& w) {
 // ----
 
 int main () {
-    collatz_solve(cin, cout);
+
+
+//    collatz_solve(cin, cout);
+//    for (int i=0; i<=999000; i += 1000){
+//        cout << i << " " << (i + 1000)<< " " << collatz_eval(i, (i + 1000)) << endl;
+//        }
     return 0;}
