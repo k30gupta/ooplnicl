@@ -14,9 +14,9 @@
 #include <iostream> // istream, ostream
 #include <string>   // string
 #include <utility>  // pair
+#include <map>
 
 using namespace std;
-
 // ------------
 // collatz_read
 // ------------
